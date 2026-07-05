@@ -1,0 +1,18 @@
+# Environment / secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# Database (never commit real customer data; SQLite file is created at runtime)
+*.db
+*.sqlite3
+
+# OS / editor cruft
+.DS_Store
+.vscode/
+.idea/
