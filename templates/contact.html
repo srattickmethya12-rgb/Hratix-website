@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — HRATIX</title>
+    <meta name="description" content="Get in touch with HRATIX to start your next web design or development project.">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/hratix-mark.svg') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/shared.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact_style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.fog.min.js"></script>
+</head>
+<body>
+    {% include "_vanta_bg.html" %}
+    {% include "_header.html" %}
+
+    <header class="page-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="logo">
+                        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/hratix-logo.svg') }}" alt="Hratix_Logo"></a>
+                    </div>
+                    <div class="page-heading">
+                        {% if msg_sent %}
+                        <h2>Message received</h2>
+                        <h2>We will get in touch with you shortly</h2>
+                        {% else %}
+                        <h2>Contact_Us</h2>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="submit-form">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p>
+                        Get in touch with us
+                    </p>
+
+                    {% if error %}
+                    <div class="form-alert" role="alert">{{ error }}</div>
+                    {% endif %}
+
+                    <div class="submit-form-div">
+                        <form
+                            id="contactForm"
+                            name="sentMessage"
+                            action="{{ url_for('contact') }}"
+                            method="post"
+                        >
+                            <div class="form-floating">
+                                <input
+                                    class="form-control"
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    placeholder="Enter your name..."
+                                    required
+                                />
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="form-floating">
+                                <input
+                                    class="form-control"
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    placeholder="Enter your email..."
+                                    required
+                                />
+                                <label for="email">Email address</label>
+                            </div>
+                            <div class="form-floating">
+                                <input
+                                    class="form-control"
+                                    id="phone"
+                                    name="phone"
+                                    type="tel"
+                                    placeholder="Enter your phone number..."
+                                    required
+                                />
+                                <label for="phone">Phone Number</label>
+                            </div>
+                            <div class="form-floating">
+                                <textarea
+                                    class="form-control"
+                                    id="message"
+                                    name="message"
+                                    placeholder="Enter your message here..."
+                                    required
+                                    style="height: 12rem"
+                                ></textarea>
+                                <label for="message">Message</label>
+                            </div>
+                            <br>
+                            <button
+                            class="btn btn-primary text-uppercase"
+                            id="submitButton"
+                            type="submit"
+                            >
+                            Send
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% include "_footer.html" %}
+    {% include "_whatsapp_button.html" %}
+
+    <script src="{{ url_for('static', filename='js/shared.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/contact_script.js') }}"></script>
+</body>
+</html>

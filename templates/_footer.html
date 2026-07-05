@@ -1,0 +1,28 @@
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <img src="{{ url_for('static', filename='images/hratix-logo.svg') }}" alt="HRATIX">
+                <p>A web design and development studio for brands that want to look as sharp online as they do in person.</p>
+            </div>
+            <div class="footer-cols">
+                <div class="footer-col">
+                    <h4>Sitemap</h4>
+                    <a href="{{ url_for('home') }}">Home</a>
+                    <a href="{{ url_for('home') }}#services-snapshot">Services</a>
+                    <a href="{{ url_for('pricing') }}">Pricing</a>
+                    <a href="{{ url_for('contact') }}">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Get in touch</h4>
+                    <span>hello@hratix.com</span>
+                    <span>+1 (555) 010-0199</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; {{ current_year }} HRATIX. All rights reserved.</span>
+            <span class="tagline">DESIGN . BUILD . ELEVATE .</span>
+        </div>
+    </div>
+</footer>

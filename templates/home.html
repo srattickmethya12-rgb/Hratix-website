@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRATIX — Design. Build. Elevate.</title>
+    <meta name="description" content="HRATIX is a web design and development studio that designs, builds, and elevates digital experiences for ambitious brands.">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/hratix-mark.svg') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/shared.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home_style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.fog.min.js"></script>
+</head>
+<body>
+
+    {% include "_vanta_bg.html" %}
+    {% include "_header.html" %}
+
+    <main>
+        <section id="hero-section" class="hero">
+            <div class="container hero-inner">
+                <p class="eyebrow">WEB DESIGN &amp; DEVELOPMENT STUDIO</p>
+                <h1>We <span class="grad">design</span>, build, and <span class="grad">elevate</span><br>digital experiences.</h1>
+                <p class="hero-sub">HRATIX partners with ambitious brands to ship websites and products that look sharp, load fast, and convert visitors into customers.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="{{ url_for('contact') }}">Start a project</a>
+                    <a class="btn btn-ghost" href="{{ url_for('pricing') }}">See pricing</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services-snapshot" class="services">
+            <div class="container">
+                <p class="section-eyebrow">WHAT WE DO</p>
+                <h2>Everything your brand needs to show up well online.</h2>
+
+                <div class="services-grid">
+                    <div class="star-border-card">
+                        <div class="star-border-glow"></div>
+                        <div class="star-border-inner">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 8h7v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </div>
+                            <h3>Web Design</h3>
+                            <p>Interfaces built around your users, not your sitemap — wireframed, designed, and tested before a line of code ships.</p>
+                        </div>
+                    </div>
+
+                    <div class="star-border-card">
+                        <div class="star-border-glow"></div>
+                        <div class="star-border-inner">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 6l-4 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </div>
+                            <h3>Web Development</h3>
+                            <p>Fast, accessible, maintainable builds — from marketing sites to full product front ends and the backends behind them.</p>
+                        </div>
+                    </div>
+
+                    <div class="star-border-card">
+                        <div class="star-border-glow"></div>
+                        <div class="star-border-inner">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.6"/></svg>
+                            </div>
+                            <h3>Brand Identity</h3>
+                            <p>Logos, color systems, and design tokens that hold up across a homepage, a pitch deck, and everything between.</p>
+                        </div>
+                    </div>
+
+                    <div class="star-border-card">
+                        <div class="star-border-glow"></div>
+                        <div class="star-border-inner">
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V9M11 19V5M18 19v-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                            </div>
+                            <h3>Growth &amp; SEO</h3>
+                            <p>Technical SEO, analytics, and conversion tracking wired in from day one so launch day isn't a guessing game.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Final-Conversion-Section" class="conversion">
+            <div class="container">
+                <p class="section-eyebrow">HOW WE WORK</p>
+                <h2>From idea to launch in four steps.</h2>
+
+                <div class="stepper" data-stepper>
+                    <div class="stepper-track">
+                        <div class="stepper-progress" data-progress></div>
+                        <button class="step is-active" data-step="0" type="button">
+                            <span class="step-num">01</span><span class="step-label">Discover</span>
+                        </button>
+                        <button class="step" data-step="1" type="button">
+                            <span class="step-num">02</span><span class="step-label">Design</span>
+                        </button>
+                        <button class="step" data-step="2" type="button">
+                            <span class="step-num">03</span><span class="step-label">Build</span>
+                        </button>
+                        <button class="step" data-step="3" type="button">
+                            <span class="step-num">04</span><span class="step-label">Elevate</span>
+                        </button>
+                    </div>
+
+                    <div class="stepper-panels">
+                        <div class="stepper-panel is-active" data-panel="0">
+                            <h3>Discover</h3>
+                            <p>We start with your goals, audience, and competitors — so every decision after this has a reason behind it.</p>
+                        </div>
+                        <div class="stepper-panel" data-panel="1">
+                            <h3>Design</h3>
+                            <p>Wireframes, then high-fidelity screens in your brand colors. You review and approve before anything is built.</p>
+                        </div>
+                        <div class="stepper-panel" data-panel="2">
+                            <h3>Build</h3>
+                            <p>Clean, fast, responsive code — built to the approved design and tested across devices before it goes live.</p>
+                        </div>
+                        <div class="stepper-panel" data-panel="3">
+                            <h3>Elevate</h3>
+                            <p>We launch, monitor performance, and keep refining — because a website's job continues long after it ships.</p>
+                        </div>
+                    </div>
+
+                    <div class="stepper-nav">
+                        <button type="button" data-prev>Back</button>
+                        <button type="button" data-next>Next</button>
+                    </div>
+                </div>
+
+                <a class="btn btn-primary cta-final" href="{{ url_for('contact') }}">Start your project</a>
+            </div>
+        </section>
+    </main>
+
+    {% include "_footer.html" %}
+    {% include "_whatsapp_button.html" %}
+
+    <script src="{{ url_for('static', filename='js/shared.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/home_script.js') }}"></script>
+</body>
+</html>

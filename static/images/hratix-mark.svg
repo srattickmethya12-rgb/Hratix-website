@@ -1,0 +1,15 @@
+<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HRATIX mark">
+  <defs>
+    <linearGradient id="hxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9D5CFF"/>
+      <stop offset="55%" stop-color="#B954E8"/>
+      <stop offset="100%" stop-color="#D946C0"/>
+    </linearGradient>
+  </defs>
+  <!-- H stroke (white) -->
+  <polygon points="38,58 70,30 70,182 38,210" fill="#F5F4F7"/>
+  <polygon points="38,104 118,104 118,128 38,128" fill="#F5F4F7"/>
+  <!-- X strokes (gradient) -->
+  <polygon points="96,40 130,40 204,210 170,210" fill="url(#hxGrad)"/>
+  <polygon points="204,40 170,40 96,210 130,210" fill="url(#hxGrad)"/>
+</svg>

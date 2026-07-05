@@ -1,0 +1,27 @@
+<svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="HRATIX - Design. Build. Elevate.">
+  <defs>
+    <linearGradient id="hxGradFull" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9D5CFF"/>
+      <stop offset="55%" stop-color="#B954E8"/>
+      <stop offset="100%" stop-color="#D946C0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon mark -->
+  <g transform="translate(0,10)">
+    <polygon points="22,48 54,20 54,150 22,172" fill="#F5F4F7"/>
+    <polygon points="22,86 92,86 92,108 22,108" fill="#F5F4F7"/>
+    <polygon points="78,32 106,32 166,172 138,172" fill="url(#hxGradFull)"/>
+    <polygon points="166,32 138,32 78,172 106,172" fill="url(#hxGradFull)"/>
+  </g>
+
+  <!-- Wordmark: HRATIX -->
+  <text x="216" y="118" font-family="Sora, Arial, sans-serif" font-weight="700" font-size="76" letter-spacing="2">
+    <tspan fill="#F5F4F7">HRA</tspan><tspan fill="url(#hxGradFull)">TIX</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="219" y="152" font-family="'JetBrains Mono', monospace" font-weight="500" font-size="15" letter-spacing="3" fill="#B186E0">
+    DESIGN . BUILD . ELEVATE .
+  </text>
+</svg>

@@ -1,0 +1,17 @@
+<header id="main-head">
+    <a href="{{ url_for('home') }}" class="pillnav-logo">
+        <img src="{{ url_for('static', filename='images/hratix-mark.svg') }}" alt="HRATIX">
+        <span>HRA<span class="x">TIX</span></span>
+    </a>
+    <ul class="pillnav-links">
+        <div class="pillnav-indicator"></div>
+        <li><a href="{{ url_for('home') }}" data-path="/">Home</a></li>
+        <li><a href="{{ url_for('home') }}#services-snapshot" data-path="/services">Services</a></li>
+        <li><a href="{{ url_for('pricing') }}" data-path="/pricing">Pricing</a></li>
+        <li><a href="{{ url_for('contact') }}" data-path="/contact">Contact</a></li>
+    </ul>
+    <a href="{{ url_for('contact') }}" class="pillnav-cta">Start a project</a>
+    <button class="pillnav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
+</header>

@@ -1,0 +1,352 @@
+/* =========================================================
+   HRATIX — Shared Design Tokens & Site Chrome
+   Theme derived from the HRATIX mark: black ground, violet→
+   magenta "X" gradient, clean geometric wordmark.
+   ========================================================= */
+
+:root {
+  /* Color */
+  --bg: #07060a;
+  --bg-elevated: #0f0d15;
+  --bg-card: #131019;
+  --line: rgba(245, 244, 247, 0.09);
+  --line-strong: rgba(245, 244, 247, 0.18);
+
+  --purple-1: #7c3aed;
+  --purple-2: #9d5cff;
+  --purple-3: #b954e8;
+  --purple-4: #d946c0;
+  --grad-hx: linear-gradient(135deg, var(--purple-2) 0%, var(--purple-3) 55%, var(--purple-4) 100%);
+
+  --white: #f5f4f7;
+  --muted: #a39bb5;
+  --muted-dim: #6f6680;
+
+  /* Type */
+  --font-display: 'Sora', Arial, sans-serif;
+  --font-body: 'Inter', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Layout */
+  --container: 1180px;
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   GLOBAL VANTA FOG BACKGROUND
+   Fixed full-viewport layer sitting behind every page's content.
+   ========================================================= */
+
+#vanta-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background: var(--bg);
+}
+
+/* A fixed dark scrim between the animated fog and the page content.
+   Without this, text sitting directly over a bright patch of fog (rather
+   than over one of the solid card panels) becomes hard to read — the scrim
+   guarantees contrast no matter what the animation is doing at any given
+   moment, the same way a dark overlay is used over hero background video. */
+#vanta-scrim {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background: rgba(6, 5, 9, 0.66);
+}
+
+/* Static fallback (prefers-reduced-motion, or if the CDN scripts fail to
+   load) — same purple/black/white palette, no motion required. */
+#vanta-bg.vanta-bg-fallback {
+  background:
+    radial-gradient(60% 50% at 20% 15%, rgba(157, 92, 255, 0.28) 0%, rgba(157, 92, 255, 0) 60%),
+    radial-gradient(55% 45% at 85% 80%, rgba(217, 70, 192, 0.22) 0%, rgba(217, 70, 192, 0) 60%),
+    var(--bg);
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+::selection { background: var(--purple-2); color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   PILL NAV  (id="main-head")
+   ========================================================= */
+
+#main-head {
+  position: fixed;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  width: min(94%, 720px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px 8px 18px;
+  background: rgba(15, 13, 21, 0.6);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  transition: top 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+
+#main-head.is-scrolled {
+  top: 14px;
+  background: rgba(10, 9, 14, 0.82);
+  box-shadow: 0 14px 40px -12px rgba(157, 92, 255, 0.35);
+}
+
+.pillnav-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+}
+.pillnav-logo img { height: 28px; width: 28px; }
+.pillnav-logo span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.pillnav-logo span .x { background: var(--grad-hx); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+.pillnav-links {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pillnav-links a {
+  position: relative;
+  z-index: 2;
+  display: block;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  border-radius: 999px;
+  transition: color 0.3s ease;
+}
+.pillnav-links a:hover { color: var(--white); }
+.pillnav-links a.is-active { color: var(--bg); }
+
+.pillnav-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--grad-hx);
+  z-index: 1;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1), width 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+  box-shadow: 0 4px 18px -4px rgba(185, 84, 232, 0.6);
+}
+
+.pillnav-cta {
+  flex-shrink: 0;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--bg);
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.pillnav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -8px rgba(245, 244, 247, 0.35); }
+
+.pillnav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.pillnav-toggle span {
+  width: 16px;
+  height: 1.5px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+@media (max-width: 720px) {
+  .pillnav-links { display: none; }
+  .pillnav-cta { display: none; }
+  .pillnav-toggle { display: flex; }
+
+  #main-head.menu-open {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    row-gap: 0;
+  }
+
+  #main-head.menu-open .pillnav-links {
+    display: flex;
+    flex-direction: column;
+    order: 3;
+    width: 100%;
+    margin-top: 10px;
+    background: rgba(10, 9, 14, 0.96);
+    border: 1px solid var(--line-strong);
+    border-radius: 20px;
+    padding: 10px;
+    gap: 4px;
+  }
+  #main-head.menu-open .pillnav-links a { padding: 12px 16px; }
+  #main-head.menu-open .pillnav-indicator { display: none; }
+
+  #main-head.menu-open .pillnav-cta {
+    display: block;
+    order: 4;
+    width: 100%;
+    margin-top: 8px;
+    text-align: center;
+  }
+}
+
+/* =========================================================
+   FOOTER (shared)
+   ========================================================= */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--bg-elevated);
+  padding: 64px 0 28px;
+  margin-top: 0;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 48px;
+  padding-bottom: 44px;
+}
+
+.footer-brand img { height: 30px; width: auto; margin-bottom: 14px; }
+.footer-brand p {
+  color: var(--muted);
+  font-size: 14px;
+  max-width: 280px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-cols {
+  display: flex;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+
+.footer-col h4 {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--purple-3);
+  margin: 0 0 16px;
+}
+.footer-col a, .footer-col span {
+  display: block;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 10px;
+  transition: color 0.25s ease;
+}
+.footer-col a:hover { color: var(--white); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted-dim);
+}
+.footer-bottom .tagline { font-family: var(--font-mono); letter-spacing: 1.5px; }
+
+/* =========================================================
+   WHATSAPP FLOATING BUTTON
+   ========================================================= */
+
+.whatsapp-fab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 150;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25d366;
+  box-shadow: 0 10px 28px -8px rgba(0, 0, 0, 0.55), 0 0 0 3px rgba(157, 92, 255, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.whatsapp-fab svg { width: 30px; height: 30px; color: #ffffff; }
+.whatsapp-fab:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 14px 34px -8px rgba(0, 0, 0, 0.6), 0 0 0 4px rgba(157, 92, 255, 0.4);
+}
+
+@media (max-width: 640px) {
+  .whatsapp-fab { right: 16px; bottom: 16px; width: 52px; height: 52px; }
+  .whatsapp-fab svg { width: 26px; height: 26px; }
+}

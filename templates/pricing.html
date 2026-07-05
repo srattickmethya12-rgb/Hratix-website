@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing — HRATIX</title>
+    <meta name="description" content="Simple, transparent pricing for HRATIX web design and development packages.">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/hratix-mark.svg') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/shared.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pricing_style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.fog.min.js"></script>
+</head>
+<body>
+
+    {% include "_vanta_bg.html" %}
+    {% include "_header.html" %}
+
+    <main>
+        <section class="pricing-hero">
+            <div class="container">
+                <p class="eyebrow center">PRICING</p>
+                <h1>Simple packages, no surprise invoices.</h1>
+                <p class="pricing-sub">Pick a starting point — every project is scoped to what your brand actually needs before we quote a final number.</p>
+            </div>
+        </section>
+
+        <section id="pricing-section">
+            <div class="scroll-stack" data-scroll-stack>
+
+                <article class="price-card" data-stack-card>
+                    <div class="price-card-inner">
+                        <p class="plan-name">Starter</p>
+                        <p class="plan-price"><span class="amount">₹7,999</span><span class="period">one-time</span></p>
+                        <p class="plan-desc">A focused launch for new businesses that need a credible site fast.</p>
+                        <ul class="plan-features">
+                            <li>Up to 5 pages</li>
+                            <li>Responsive design</li>
+                            <li>Contact form setup</li>
+                            <li>Basic on-page SEO</li>
+                            <li>2 weeks delivery</li>
+                        </ul>
+                        <a href="{{ url_for('contact') }}" class="btn btn-ghost">Get started</a>
+                    </div>
+                </article>
+
+                <article class="price-card price-card-featured" data-stack-card>
+                    <div class="price-card-inner">
+                        <p class="plan-tag">Most popular</p>
+                        <p class="plan-name">Growth</p>
+                        <p class="plan-price"><span class="amount">₹14,999</span><span class="period">one-time</span></p>
+                        <p class="plan-desc">For brands ready to invest in design, content, and conversion.</p>
+                        <ul class="plan-features">
+                            <li>Up to 12 pages</li>
+                            <li>Custom UI design</li>
+                            <li>CMS integration</li>
+                            <li>Analytics &amp; SEO setup</li>
+                            <li>4 weeks delivery</li>
+                            <li>30 days post-launch support</li>
+                        </ul>
+                        <a href="{{ url_for('contact') }}" class="btn btn-primary">Get started</a>
+                    </div>
+                </article>
+
+                <article class="price-card" data-stack-card>
+                    <div class="price-card-inner">
+                        <p class="plan-name">Elevate</p>
+                        <p class="plan-price"><span class="amount">Custom</span><span class="period">scoped</span></p>
+                        <p class="plan-desc">Full product builds, e-commerce, or ongoing design &amp; dev partnership.</p>
+                        <ul class="plan-features">
+                            <li>Unlimited pages</li>
+                            <li>Web app / e-commerce builds</li>
+                            <li>API &amp; backend integration</li>
+                            <li>Dedicated design system</li>
+                            <li>Ongoing retainer available</li>
+                        </ul>
+                        <a href="{{ url_for('contact') }}" class="btn btn-ghost">Talk to us</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    {% include "_footer.html" %}
+    {% include "_whatsapp_button.html" %}
+
+    <script src="{{ url_for('static', filename='js/shared.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/pricing_script.js') }}"></script>
+</body>
+</html>
