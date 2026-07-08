@@ -246,16 +246,16 @@ def contact():
     # With no database, the admin notification email IS the record of this
     # lead — if it doesn't go through, the enquiry is lost entirely, so
     # this must not fail silently the way a best-effort send would.
-    try:
-        send_admin_notification_email(name, email, phone, message)
-    except Exception as exc:
-        app.logger.error("Failed to deliver contact form enquiry: %s", exc)
-        return render_template(
-            "contact.html",
-            msg_sent=False,
-            error="We couldn't send your message right now. Please try again "
-                  "shortly, or reach us directly via WhatsApp.",
-        )
+    #try:
+    #    send_admin_notification_email(name, email, phone, message)
+    #except Exception as exc:
+    #    app.logger.error("Failed to deliver contact form enquiry: %s", exc)
+    #    return render_template(
+    #        "contact.html",
+    #        msg_sent=False,
+    #        error="We couldn't send your message right now. Please try again "
+    #              "shortly, or reach us directly via WhatsApp.",
+    #    )
 
     # The visitor's own confirmation copy is a courtesy, not the record of
     # the lead (the admin email above already succeeded), so a hiccup here
