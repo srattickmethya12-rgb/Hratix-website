@@ -6,9 +6,9 @@ from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formatdate, make_msgid
-
-from dotenv import load_dotenv
-from flask import Flask, render_template, request
+from flask import url_for # type: ignore[import]
+from dotenv import load_dotenv  # type: ignore[import]
+from flask import Flask, render_template, request  # type: ignore[import]
 
 load_dotenv()
 
@@ -207,6 +207,23 @@ if FLASK_DEBUG:
             return f"FAILED: {exc}", 500
         return f"Sent OK ({kind}) to {to}"
 
+@app.route("/sitemap.xml")
+def sitemap_xml():
+    pages = [
+        {"loc": url_for("home", _external=True), "priority": "1.0", "changefreq": "weekly"},
+        {"loc": url_for("pricing", _external=True), "priority": "0.9", "changefreq": "monthly"},
+        {"loc": url_for("contact", _external=True), "priority": "0.8", "changefreq": "monthly"},
+    ]
+    xml_parts = ['<?xml version="1.0" encoding="UTF-8"?>',
+                 '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for page in pages:
+        xml_parts.append(
+            f"  <url><loc>{page['loc']}</loc>"
+            f"<changefreq>{page['changefreq']}</changefreq>"
+            f"<priority>{page['priority']}</priority></url>"
+        )
+    xml_parts.append("</urlset>")
+    return "\n".join(xml_parts), 200, {"Content-Type": "application/xml; charset=utf-8"}
 
 @app.route("/")
 def home():
@@ -246,16 +263,16 @@ def contact():
     # With no database, the admin notification email IS the record of this
     # lead — if it doesn't go through, the enquiry is lost entirely, so
     # this must not fail silently the way a best-effort send would.
-    #try:
-    #    send_admin_notification_email(name, email, phone, message)
-    #except Exception as exc:
-    #    app.logger.error("Failed to deliver contact form enquiry: %s", exc)
-    #    return render_template(
-    #        "contact.html",
-    #        msg_sent=False,
-    #        error="We couldn't send your message right now. Please try again "
-    #              "shortly, or reach us directly via WhatsApp.",
-    #    )
+    try:
+        send_admin_notification_email(name, email, phone, message)
+    except Exception as exc:
+        app.logger.error("Failed to deliver contact form enquiry: %s", exc)
+        return render_template(
+            "contact.html",
+            msg_sent=False,
+            error="We couldn't send your message right now. Please try again "
+                  "shortly, or reach us directly via WhatsApp.",
+        )
 
     # The visitor's own confirmation copy is a courtesy, not the record of
     # the lead (the admin email above already succeeded), so a hiccup here
